@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar game;
+
+public <greet> = (Start | Black | Blue | Pink | Green | White | Orange | Yellow | Red);

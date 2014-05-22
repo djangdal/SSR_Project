@@ -1,0 +1,19 @@
+\section*{Performance analysis}
+\subsection*{Theoretical Background}
+When it comes to accuracy analysis of a recognizer two classical characteristics are used : The Word error rate, $WER$, and the Accuracy, $Acc$. If we call $N$ the number of words in a sentence, $D$ the number of deletions, $I$ the number of insertions and $S$ the number of substitution, those two characteristic are computed as follow: 
+\begin{align*}
+WER = \frac{(I + D + S)}{N},
+Acc = \frac{(N-D-S)}{N}.
+\end{align*}
+
+To compute the $I$, $D$ and $S$, one 
+Accuracy is actually a worse measure for most tasks, since insertions are also important in final results. But for some tasks, accuracy is a reasonable measure of the decoder performance. 
+
+\subsection*{One word grammar}
+In the game, our grammar is very basic. It consist of sentences of only one word. The possible words are the eight colors : Black, Blue, Pink, Green, White, Orange, Yellow, Red. Our first task was to analyze the accuracy of the model for the framework of our game. 
+
+The results of our tests were very clear. In a quiet environment, we reached 100\% of accuracy. Even the word Black and Blue which have two common phonemes were not confused. Therefore, we decided to do a more advanced performance analysis.   
+
+\subsection*{Sentence of several colors (fix number)}
+
+\subsection*{Loop grammar}
