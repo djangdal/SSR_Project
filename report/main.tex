@@ -45,7 +45,9 @@
 \begin{abstract}
 Thanks to advances in speech recognition technology, integrating speech recognition supports into a lot of our everyday life devices has been made possible. One of the numerous possible applications is to use speech engines inside games. Making speech part of the game is a promising way of involving the player into a game. 
 
-The goal in this project was to build a speech recognizer to play the game "Say the color not the word" \cite{game_site}. The purpose of this game is to speak out the color in which a word is written. To confuse the player, the written word is in fact an other color. 
+The goal in this project was to build a speech recognizer to play the game "Say the Color not the Word" \cite{game_site}. The purpose of this game is to speak out the color in which a word is written. To confuse the player, the written word is in fact an other color. 
+
+Furthermore, an analysis of the performances of the Sphinx speech recognizer was carried out in a couple of experiments for various setups.
 
 
 \end{abstract}
@@ -54,11 +56,18 @@ The goal in this project was to build a speech recognizer to play the game "Say 
 \input{game_implementation}
 \input{perf_analysis}
 
-\section*{Training the model}
-Use Sphinx 3 coded in C. 
+\section*{Adapting the model}
+We are currently using the default acoustic model of Sphinx4 and it gives perfect results when the experimental conditions are optimal (silent environment, one-word grammar, close microphone...). However, when some of those requirements are not fulfilled anymore, performances can dramatically decrease, as observed above. A solution to this issue is to adapt the model in order to improve speech recognition in the considered configuration. Adaptation can be done with respect to recording environment to yield robustness to noise, to players' accents or to types of microphones for instance.
+
+Adapting the acoustic model only requires a small amount of transcribed data: a list of sentences along with a dictionary describing the pronunciations of the words, and a record of these sentences in the targeted situations. Once the data are gathered, one can use SphinxTrain to adapt the existing model. Two methods are available for the updating step: Maximum \textit{A Posteriori} (MAP) and Maximum Likelihood Linear Regression (MLLR).
+
+This further step can greatly enhance the performances of the speech recognizer, especially when a loop grammar is used or when the game is played in a noisy environment. Moreover, its cost is rather low compared to the one of training a complete model, and it does not require lots of speech data. It is therefore quite easy to perform with the tools given in Sphinx.
+
+\section*{Conclusion}
+In this report the use of a speech engine and its integration within a created game have been described. The choice for the recognizer has been made in favor of Sphinx for various implementation reasons and ease of use. After a thorough study of the structure of Sphinx4, the Say the Color not the Word game has been implemented in Java, making use of the considered speech recognizer. An analysis of the recognition performances of Sphinx4 has been completed with a few different grammars (one-word and loop grammars). The simplest case yields perfect results when some environmental conditions are met. On the other hand, when some of those requirements are not fulfilled or when the loop grammar is used, the recognizer sees a significant decrease in its performances. A way to overcome this issue by adapting the acoustic model has finally been discussed in the latter part of the report.
 
 \begin{thebibliography}{40}
-\bibitem{game_site} Game "say the color not what is written". \\ http://www.brainbashers.com/colour.asp
+\bibitem{game_site} Game "Say the Color not the Word". \\ http://www.brainbashers.com/colour.asp
 
 \bibitem{list_rec_soft} List of Speech recognition software. \\ http://en.wikipedia.org/wiki/List\_of\_speech\_recognition\_software
 
