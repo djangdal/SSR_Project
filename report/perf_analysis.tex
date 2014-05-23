@@ -10,7 +10,7 @@ Accuracy does not take into account the number of insertions. Therefore, it is a
 To compute $I$, $D$ and $S$ one may use dynamic programming. The dynamic time warping algorithm that we can use to compute the performance of a recognizer goes as follows:
 
 \begin{algorithm}[H]
- \KwData{Two sentences the true one (size $N$) and the recognize one (size $N'$)}
+ \KwData{Two sentences: the true one (size $N$) and the recognized one (size $N'$)}
  \KwResult{Distance between the sentences}
  \For{i=1 to $N'$}{
   \For{j=1 to $N$}{
@@ -44,18 +44,19 @@ Tables \ref{tad:david_result} and \ref{tad:clem_result} gather our results. On t
 One can now compute the WER and Accuracy of the results on our experiment for each speaker and then for both together. 
 
 \begin{align*}
-WER(S_1) = \frac{2 + 11 +16}{67} = 0.433, Acc(S_1) = \frac{67-11-16}{67} = 0.597
+WER(S_1) = \frac{2 + 11 +16}{67} = 0.433,\quad Acc(S_1) = \frac{67-11-16}{67} = 0.597
 \end{align*}
 \begin{align*}
-WER(S_2) = \frac{4 + 0 + 12}{64} = 0.250, Acc(S_2) = \frac{64-0-12}{64} = 0.813 
+WER(S_2) = \frac{4 + 0 + 12}{64} = 0.250,\quad Acc(S_2) = \frac{64-0-12}{64} = 0.813 
 \end{align*}
 \begin{align*}
-WER(tot) = \frac{2 + 11 +16 +4 +0 +12}{67+64} = 0.344, Acc(tot) = \frac{67 + 64 -11-16 - 0 -12}{67 + 64} = 0.702 
+WER(tot) = \frac{2 + 11 +16 +4 +0 +12}{67+64} = 0.344,\quad Acc(tot) = \frac{67 + 64 -11-16 - 0 -12}{67 + 64} = 0.702 
 \end{align*}
 
 On the confusion matrices, it is interesting to notice that the word "Blue" is often recognized as "Pink" for both speakers. For both speakers, it is even more often confused than well recognized. Moreover, the confusion appears only in one direction: from Blue to Pink and never from Pink to Blue. This is quite surprising since those two words have no common phoneme but this error seems consistent. However, since this confusion did not appear while using a one-word grammar one may think that some co-articulation phenomenons appear here making those two words easy to confuse while spoken between two other words. 
 
 \begin{table}[h!]
+\begin{center}
   \begin{tabular}{|l|*{8}{c|}}
 \hline
  TW/RW  & Black & Blue & Pink & Green & White & Orange & Yellow & Red \\
@@ -77,11 +78,13 @@ Yellow & & 2 & 1 & & & & 4 & 1 	\\
 Red & & & 1 & & & & & 1 \\
 \hline
   \end{tabular}
-\caption{Confusion matrix for $S_1$, $I = 2$, $D = 11$, $S=16$}
+\end{center}
+\caption{Confusion matrix for $S_1$, $I = 2$, $D = 11$, $S=16$.}
 \label{tad:david_result}
 \end{table}
 
 \begin{table}[h!]
+\begin{center}
   \begin{tabular}{|l|*{8}{c|}}
   \hline
  TW/RW  & Black & Blue & Pink & Green & White & Orange & Yellow & Red \\
@@ -103,6 +106,7 @@ Yellow & & & & & & & 5 & \\
 Red & & & 3 & & & 3 & & 1 \\
 \hline
   \end{tabular}
-\caption{Confusion matrix for $S_2$, $I = 4$, $D = 0$, $S=12$}
+\end{center}
+\caption{Confusion matrix for $S_2$, $I = 4$, $D = 0$, $S=12$.}
 \label{tad:clem_result}
 \end{table}

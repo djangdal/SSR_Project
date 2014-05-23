@@ -1,5 +1,5 @@
 \section*{The Speech engine}
-\subsection*{Which Speech Engine did we use ?}
+\subsection*{Which Speech Engine did we use?}
 There exist a lot of speech recognition engines available on the market \cite{list_rec_soft}. Among all the possible ones, we especially studied the qualities and defaults of three different speech engines to choose the one to use on our application. 
 
 First we looked at ATK the real-time API for HTK \cite{atk}. This API was build to facilitate building experimental application for HTK. It consists of a C++ layer lying on the top of the standard HTK library. ATK was, like HTK, developed at the departement of engineering in the university of Cambridge. A good point of using ATK is that it enables us to easily build and train a recognizer from scratch. However, ATK had some defaults which prevented us to use HTK as a speech engine for the game. First of all the last update of ATK dates back to 2007 and there is not much documentation available on the web which let us fear some troubles. Moreover, ATK does not support Mac. 
