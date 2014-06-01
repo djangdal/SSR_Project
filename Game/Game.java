@@ -30,25 +30,28 @@ public class Game {
             System.exit(1);
         }
 
-        System.out.println("Say: (Blue | Black | Yellow | Green | Orange | Purple)");
+        w.startGame();
+
+        Result result = recognizer.recognize();
+        String resultText = result.getBestFinalResultNoFiller();
+        System.out.println("Got result: "+ resultText);
+        while(resultText.equals("")){
+            result = recognizer.recognize();
+            resultText = result.getBestFinalResultNoFiller();
+            System.out.println("Got result: "+ resultText);
+        }
 
         // loop the recognition until the programm exits.
         while (true) {
-            System.out.println("Start speaking. Press Ctrl-C to quit.\n");
-
-            Result result = recognizer.recognize();
-
-            int t = r.nextInt(8);
-            int c;
-            do{
-                c = r.nextInt(8);
-            }
+            int c, t = r.nextInt(8);
+            do c = r.nextInt(8);
             while(c == t);
-
             w.showTextWithColor(t, c);
-
+            result = recognizer.recognize();
+            
             if (result != null) {
-                String resultText = result.getBestFinalResultNoFiller();
+                resultText = result.getBestFinalResultNoFiller();
+                w.showResult(resultText);
                 System.out.println("You said: " + resultText + '\n');
             } else {
                 System.out.println("I can't hear what you said.\n");
